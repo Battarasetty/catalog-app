@@ -2,7 +2,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardMedia,
   Chip,
   Typography,
   Box,
@@ -32,6 +31,10 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
         border: "1px solid",
         borderColor: "divider",
         borderRadius: 3,
+        height: "100%",
+        minHeight: 280,
+        display: "flex",
+        flexDirection: "column",
         transition: "all 0.2s ease",
         "&:hover": {
           borderColor: "primary.main",
@@ -40,35 +43,84 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
         },
       }}
     >
-      <CardActionArea onClick={() => onSelect(item)}>
-        <CardMedia
-          component="img"
-          height="160"
-          image={item.image}
-          alt={item.itemname}
-          sx={{ objectFit: "cover" }}
-          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-            e.currentTarget.src = "https://placehold.co/400x160?text=No+Image";
+      <CardActionArea
+        onClick={() => onSelect(item)}
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
+          justifyContent: "flex-start",
+        }}
+      >
+        {/* Fixed height image container — always 180px, broken or not */}
+        <Box
+          sx={{
+            width: "100%",
+            aspectRatio: "16/9", // ← THIS forces every image same ratio
+            overflow: "hidden",
+            bgcolor: "grey.100",
+            flexShrink: 0,
           }}
-        />
-        <CardContent>
+        >
+          <Box
+            component="img"
+            src={item.image}
+            alt={item.itemname}
+            onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+              e.currentTarget.src =
+                "https://placehold.co/400x225?text=No+Image";
+            }}
+            sx={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </Box>
+
+        {/* Card content — grows to fill remaining space */}
+        <CardContent
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
           <Chip
             label={item.category}
             color={categoryColors[item.category] ?? "default"}
             size="small"
-            sx={{ mb: 1, fontWeight: 600, fontSize: 11 }}
+            sx={{
+              mb: 1,
+              fontWeight: 600,
+              fontSize: 11,
+              alignSelf: "flex-start",
+            }}
           />
           <Typography variant="subtitle1" fontWeight={600} noWrap>
             {item.itemname}
           </Typography>
+
+          {/* First prop preview — pinned to bottom of card */}
           {item.itemprops[0] && (
             <Box
-              sx={{ display: "flex", justifyContent: "space-between", mt: 1 }}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                mt: "auto",
+                pt: 1,
+                borderTop: "1px solid",
+                borderColor: "divider",
+              }}
             >
               <Typography variant="caption" color="text.secondary">
                 {item.itemprops[0].label}
               </Typography>
-              <Typography variant="caption" fontWeight={500}>
+              <Typography variant="caption" fontWeight={600}>
                 {item.itemprops[0].value}
               </Typography>
             </Box>

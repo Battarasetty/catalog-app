@@ -1,4 +1,6 @@
-import { Box, Grid, Typography, Divider } from "@mui/material";
+"use client";
+
+import { Box, Divider, Typography } from "@mui/material";
 import { CatalogItem } from "@/types/catalog";
 import ItemCard from "./ItemCard";
 
@@ -15,6 +17,7 @@ export default function CategorySection({
 }: CategorySectionProps) {
   return (
     <Box sx={{ mb: 6 }}>
+      {/* Category Header */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
         <Typography variant="h5" fontWeight={700}>
           {category}
@@ -23,14 +26,29 @@ export default function CategorySection({
           {items.length} {items.length === 1 ? "item" : "items"}
         </Typography>
       </Box>
+
       <Divider sx={{ mb: 3 }} />
-      <Grid container spacing={3}>
+
+      {/* Responsive grid using CSS — no MUI Grid needed */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "repeat(2, 1fr)", // mobile — 2 columns
+            sm: "repeat(2, 1fr)", // tablet — 2 columns
+            md: "repeat(3, 1fr)", // medium — 3 columns
+            lg: "repeat(4, 1fr)", // desktop — 4 columns
+          },
+          gap: 3,
+          alignItems: "stretch",
+        }}
+      >
         {items.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemname}>
+          <Box key={item.itemname} sx={{ display: "flex" }}>
             <ItemCard item={item} onSelect={onSelectItem} />
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }
