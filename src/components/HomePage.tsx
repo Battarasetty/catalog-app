@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Typography } from "@mui/material";
 import { CatalogItem, GroupedCatalog } from "@/types/catalog";
 import CategorySection from "./CategorySection";
@@ -20,10 +22,10 @@ export default function HomePage({ data, onSelectItem }: HomePageProps) {
 
   return (
     <Box sx={{ py: 4 }}>
-      <Typography variant="h4" fontWeight={800} sx={{ mb: 1 }}>
+      <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>
         Product Catalog
       </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 5 }}>
+      <Typography variant="body1" sx={{ color: "text.secondary", mb: 5 }}>
         Browse products across {Object.keys(grouped).length} categories
       </Typography>
 

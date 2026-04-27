@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardActionArea,
@@ -53,10 +55,11 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
           justifyContent: "flex-start",
         }}
       >
+        {/* Fixed aspect ratio image */}
         <Box
           sx={{
             width: "100%",
-            aspectRatio: "16/9", 
+            aspectRatio: "16/9",
             overflow: "hidden",
             bgcolor: "grey.100",
             flexShrink: 0,
@@ -98,7 +101,7 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
               alignSelf: "flex-start",
             }}
           />
-          <Typography variant="subtitle1" fontWeight={600} noWrap>
+          <Typography variant="subtitle1" sx={{ fontWeight: 600 }} noWrap>
             {item.itemname}
           </Typography>
 
@@ -114,10 +117,10 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
                 borderColor: "divider",
               }}
             >
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{ color: "text.secondary" }}>
                 {item.itemprops[0].label}
               </Typography>
-              <Typography variant="caption" fontWeight={600}>
+              <Typography variant="caption" sx={{ fontWeight: 600 }}>
                 {item.itemprops[0].value}
               </Typography>
             </Box>

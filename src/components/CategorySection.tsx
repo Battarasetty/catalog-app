@@ -10,18 +10,14 @@ interface CategorySectionProps {
   onSelectItem: (item: CatalogItem) => void;
 }
 
-export default function CategorySection({
-  category,
-  items,
-  onSelectItem,
-}: CategorySectionProps) {
+export default function CategorySection({ category, items, onSelectItem }: CategorySectionProps) {
   return (
     <Box sx={{ mb: 6 }}>
       <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>
           {category}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
           {items.length} {items.length === 1 ? "item" : "items"}
         </Typography>
       </Box>
@@ -38,7 +34,6 @@ export default function CategorySection({
             lg: "repeat(4, 1fr)",
           },
           gap: 3,
-          alignItems: "stretch",
         }}
       >
         {items.map((item) => (

@@ -35,13 +35,11 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: {
-            xs: "1fr",
-            md: "1fr 1fr",
-          },
+          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
           gap: 4,
         }}
       >
+        {/* LEFT — Image */}
         <Box>
           <Box
             component="img"
@@ -62,6 +60,7 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
           />
         </Box>
 
+        {/* RIGHT — Details */}
         <Box>
           <Chip
             label={item.category}
@@ -69,7 +68,7 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
             sx={{ mb: 2, fontWeight: 600 }}
           />
 
-          <Typography variant="h4" fontWeight={800} sx={{ mb: 3 }}>
+          <Typography variant="h4" sx={{ fontWeight: 800, mb: 3 }}>
             {item.itemname}
           </Typography>
 
@@ -77,8 +76,7 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
 
           <Typography
             variant="overline"
-            color="text.secondary"
-            fontWeight={600}
+            sx={{ color: "text.secondary", fontWeight: 600 }}
           >
             Specifications
           </Typography>
@@ -111,16 +109,17 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
                 >
                   <Typography
                     variant="body2"
-                    color="text.secondary"
-                    fontWeight={500}
-                    sx={{ minWidth: "140px" }}
+                    sx={{
+                      color: "text.secondary",
+                      fontWeight: 500,
+                      minWidth: "140px",
+                    }}
                   >
                     {prop.label}
                   </Typography>
                   <Typography
                     variant="body2"
-                    fontWeight={700}
-                    sx={{ textAlign: "right" }}
+                    sx={{ fontWeight: 700, textAlign: "right" }}
                   >
                     {prop.value}
                   </Typography>
@@ -128,7 +127,7 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
               ))
             ) : (
               <Box sx={{ px: 3, py: 2 }}>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
                   No specifications available.
                 </Typography>
               </Box>
