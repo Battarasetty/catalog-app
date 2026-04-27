@@ -22,7 +22,6 @@ const categoryColors: Record<
 export default function DetailPage({ item, onBack }: DetailPageProps) {
   return (
     <Box sx={{ py: 4 }}>
-      {/* Back Button */}
       <Button
         startIcon={<ArrowBackIcon />}
         onClick={onBack}
@@ -33,18 +32,16 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
         Back to Catalog
       </Button>
 
-      {/* Two column layout — CSS grid, no MUI Grid needed */}
       <Box
         sx={{
           display: "grid",
           gridTemplateColumns: {
-            xs: "1fr", // mobile — stacked
-            md: "1fr 1fr", // desktop — side by side
+            xs: "1fr",
+            md: "1fr 1fr",
           },
           gap: 4,
         }}
       >
-        {/* LEFT — Image */}
         <Box>
           <Box
             component="img"
@@ -65,23 +62,19 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
           />
         </Box>
 
-        {/* RIGHT — Details */}
         <Box>
-          {/* Category Badge */}
           <Chip
             label={item.category}
             color={categoryColors[item.category] ?? "default"}
             sx={{ mb: 2, fontWeight: 600 }}
           />
 
-          {/* Item Name */}
           <Typography variant="h4" fontWeight={800} sx={{ mb: 3 }}>
             {item.itemname}
           </Typography>
 
           <Divider sx={{ mb: 3 }} />
 
-          {/* Specifications label */}
           <Typography
             variant="overline"
             color="text.secondary"
@@ -90,7 +83,6 @@ export default function DetailPage({ item, onBack }: DetailPageProps) {
             Specifications
           </Typography>
 
-          {/* Dynamic props table — core of assignment */}
           <Paper
             elevation={0}
             sx={{

@@ -17,7 +17,6 @@ export default function CategorySection({
 }: CategorySectionProps) {
   return (
     <Box sx={{ mb: 6 }}>
-      {/* Category Header */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
         <Typography variant="h5" fontWeight={700}>
           {category}
@@ -29,15 +28,14 @@ export default function CategorySection({
 
       <Divider sx={{ mb: 3 }} />
 
-      {/* Responsive grid using CSS — no MUI Grid needed */}
       <Box
         sx={{
           display: "grid",
           gridTemplateColumns: {
-            xs: "repeat(2, 1fr)", // mobile — 2 columns
-            sm: "repeat(2, 1fr)", // tablet — 2 columns
-            md: "repeat(3, 1fr)", // medium — 3 columns
-            lg: "repeat(4, 1fr)", // desktop — 4 columns
+            xs: "repeat(2, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(4, 1fr)",
           },
           gap: 3,
           alignItems: "stretch",

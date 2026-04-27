@@ -30,7 +30,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <CssBaseline />
           <AppBar position="sticky" elevation={0}>
             <Toolbar>
-              <Typography variant="h6" fontWeight={700} letterSpacing={1}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 700, letterSpacing: 1 }}
+              >
                 🗂 Multi-Category Catalog
               </Typography>
             </Toolbar>

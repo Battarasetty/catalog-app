@@ -53,11 +53,10 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
           justifyContent: "flex-start",
         }}
       >
-        {/* Fixed height image container — always 180px, broken or not */}
         <Box
           sx={{
             width: "100%",
-            aspectRatio: "16/9", // ← THIS forces every image same ratio
+            aspectRatio: "16/9", 
             overflow: "hidden",
             bgcolor: "grey.100",
             flexShrink: 0,
@@ -80,7 +79,6 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
           />
         </Box>
 
-        {/* Card content — grows to fill remaining space */}
         <CardContent
           sx={{
             flexGrow: 1,
@@ -104,7 +102,6 @@ export default function ItemCard({ item, onSelect }: ItemCardProps) {
             {item.itemname}
           </Typography>
 
-          {/* First prop preview — pinned to bottom of card */}
           {item.itemprops[0] && (
             <Box
               sx={{
